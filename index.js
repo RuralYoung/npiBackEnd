@@ -11,8 +11,9 @@ app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
     console.log("Received GET Request")
+    let city = req.query.city;
 
-    fetch(`https://npiregistry.cms.hhs.gov/api/?version=2.1&city=Atlanta&limit=50&pretty=on`)
+    fetch(`https://npiregistry.cms.hhs.gov/api/?version=2.1&city=${city}&limit=50&pretty=on`)
     .then(response => response.json())
     .then(data => {
         return res.send(data);
